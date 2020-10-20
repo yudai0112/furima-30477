@@ -22,7 +22,7 @@
 
 | Column        | Type   | Options     |
 | ------        | ------ | ----------- |
-| product       | text   | null: false | #商品名
+| product       | string | null: false | #商品名
 | product_copy  | text   | null: false | #商品説明
 | category_id   | integer| null: false | #カテゴリー
 | status_id     | integer| null: false | #商品状態
@@ -30,13 +30,12 @@
 | area_id       | integer| null: false | #配送元地域
 | area_day_id   | integer| null: false | #配送までの日数
 | price         | integer| null: false | #価格
-| image         | ActiveStorageで実装   |
-| user          | references型         |
+| user          | references | null: false, foreign_key: true  |
 
 ### Association
 
 - belongs_to :user
-- has_one :orders
+- has_one :order
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :burden
@@ -49,30 +48,28 @@
 | Column       | Type       | Options                        |
 | -------      | ---------- | ------------------------------ |
 | user         | references | null: false, foreign_key: true |
-| items        | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+## buys テーブル
+
+| Column       | Type       | Options     |
+| ------       | ------     | ----------- |
+| postal_code  | string     | null: false | #郵便番号
+| area_id      | integer    | null: false | #都道府県
+| city         | string     | null: false | #市区町村
+| address      | string     | null: false | #番地
+| building     | string     | #建物名
+| tel          | string     | null: false | #電話番号
 | buy          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :items
-- belongs_to :user
-- has_one :buy
-
-## buy テーブル
-
-| Column       | Type       | Options     |
-| ------       | ------     | ----------- |
-| postal code  | integer    | null: false | #郵便番号
-| area_id      | integer    | null: false | #都道府県
-| city         | text       | null: false | #市区町村
-| address      | text       | null: false | #番地
-| building     | text       | null: false | #建物名
-| tel          | integer    | null: false | #電話番号
-| buy_id       | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :items
+- belongs_to :item
 - belongs_to_active_hash :area
 
 
