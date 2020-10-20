@@ -54,6 +54,7 @@
 
 - belongs_to :item
 - belongs_to :user
+- has_one :buy
 
 ## buys テーブル
 
@@ -70,6 +71,7 @@
 ### Association
 
 - belongs_to :item
+- belongs_to :order
 - belongs_to_active_hash :area
 
 
