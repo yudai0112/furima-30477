@@ -68,3 +68,7 @@ gem 'factory_bot_rails'
 gem 'pry-rails'
 gem 'pry-byebug'
 gem 'pry-doc'
+
+gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
