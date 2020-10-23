@@ -7,7 +7,7 @@ FactoryBot.define do
     burden_id            {2}
     area_id              {2}
     area_day_id          {2}
-    price                {"10000"}
+    price                {10000}
     association :user
     after(:build) do |item|
       item.image.attach(io: File.open('public/camera.png'), filename: 'camera.png')

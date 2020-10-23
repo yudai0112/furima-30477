@@ -5,8 +5,9 @@ RSpec.describe 'アイテム商品出品', type: :model do
     @item = FactoryBot.build(:item)
   end
   describe '商品情報を入力する' do
-    it "全て入力すれば新規登録できる" do
-      @item.valid?
+    it "全て入力すれば出品できる" do
+      expect(@item).to be_valid
+
     end
   end
   
