@@ -1,5 +1,5 @@
 
-class ScheduledDelivery < ActiveHash::Base
+class AreaDay < ActiveHash::Base
   self.data = [
     { id: 0, day: '---' },
     { id: 1, day: '1-2日で発送' },

@@ -5,12 +5,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :burden
   belongs_to_active_hash :area
   belongs_to_active_hash :area_day
+
   has_one_attached :image
   belongs_to :user
 
   validates :product, :product_copy, :category_id, :status_id, presence: true
-  validates :burden_id, :area_id :area_day_id, :price, :image, presence: true
+  validates :burden_id, :area_id, :area_day_id, :price, :image, presence: true
 
-  validates :category_id, :status_id, :burden_id, :area_id, :area_day_id, numericality: { other_than: 0 } 
-
+  validates :category_id, :status_id, :burden_id, :area_id, :area_day_id, presence: true, numericality: { other_than: 0 } 
+  validates :price, inclusion: { in: 300..9_999_999 }
 end
