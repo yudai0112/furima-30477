@@ -26,7 +26,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Product copy can't be blank")
     end
-    it "カテゴリを正く選択されているか" do
+    it "カテゴリが空（選択できていない）ではないか" do
       @item.category_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
@@ -36,7 +36,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be other than 0")
     end
-    it "商品の状態を正く選択されているか" do
+    it "商品の状態が空（選択できていない）ではない" do
       @item.status_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Status can't be blank")
@@ -46,7 +46,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Status must be other than 0")
     end
-    it "発送元の地域を正く選択されているか" do
+    it "発送元の地域が空（選択できていない）ではない" do
       @item.area_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Area can't be blank")
@@ -56,7 +56,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Area must be other than 0")
     end
-    it "発送までの日数を正く選択されているか" do
+    it "発送までの日数が空（選択できていない）ではない" do
       @item.area_day_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Area day can't be blank")
@@ -82,7 +82,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       expect(@item.errors.full_messages).to include ("Price is not included in the list")
     end
     it "販売価格が￥300~￥9,999,999の間であること" do
-      @item.price = 100
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not included in the list")
     end
@@ -91,7 +91,7 @@ RSpec.describe 'アイテム商品出品', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not included in the list")
     end
-    it "ユーザー" do
+    it "ユーザー情報が取得できていること" do
       @item.user = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("User must exist")  
