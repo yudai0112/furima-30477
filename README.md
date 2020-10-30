@@ -66,7 +66,7 @@
 | address      | string     | null: false | #番地
 | building     | string     | #建物名
 | tel          | string     | null: false | #電話番号
-| buy          | references | null: false, foreign_key: true |
+| order        | references | null: false, foreign_key: true |
 
 ### Association
 
