@@ -27,6 +27,11 @@ RSpec.describe Buy, type: :model do
       @buy.valid?
       expect(@buy.errors.full_messages).to include("Area can't be blank", "Area is not a number")
     end
+    it "都道府県が正く選択されているか" do
+      @buy.area_id = 0
+      @buy.valid?
+      expect(@buy.errors.full_messages).to include("Area must be other than 0")
+    end
     it "市区町村が空では登録できない" do
       @buy.city = nil
       @buy.valid?
